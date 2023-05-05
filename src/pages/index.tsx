@@ -1,27 +1,84 @@
 import { Inter } from 'next/font/google'
 import Nav from '@/components/Nav'
-import { useState } from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
-  const data = [
-    { id: 1, name: 'Item 1', list: 'list1' },
-    { id: 2, name: 'Item 2', list: 'list1' },
-    { id: 3, name: 'Item 3', list: 'list1' },
-    { id: 4, name: 'Item 4', list: 'list2' },
-    { id: 5, name: 'Item 5', list: 'list3' },
-  ]
+type List = {
+  id: number
+  name: string
+  items: Item[]
+}
 
+type Item = {
+  id: number
+  content: string
+}
+
+type CardProps = {
+  list: Item[]
+}
+
+const data: List[] = [
+  {
+    id: 1,
+    name: 'List 1',
+    items: [
+      {
+        id: 1,
+        content: 'Item 1',
+      },
+      {
+        id: 2,
+        content: 'Item 2',
+      },
+      {
+        id: 3,
+        content: 'Item 3',
+      },
+    ],
+  },
+  {
+    id: 2,
+    name: 'List 2',
+    items: [
+      {
+        id: 1,
+        content: 'Item 4',
+      },
+    ],
+  },
+  {
+    id: 3,
+    name: 'List 3',
+    items: [
+      {
+        id: 1,
+        content: 'Item 5',
+      },
+    ],
+  },
+]
+
+const Card = ({ list }: CardProps) => {
   return (
-    <>
-      <Nav />
-      <h1>Hello World</h1>
+    <div className="card">
+      <h2 className="card-title text-xl">A list</h2>
       <ul>
         {data.map((item) => (
           <li key={item.id}>{item.name}</li>
         ))}
       </ul>
+    </div>
+  )
+}
+
+const Home = () => {
+  return (
+    <>
+      <Nav />
+      <div className="flex gap-4"></div>
     </>
   )
 }
+
+export default Home
