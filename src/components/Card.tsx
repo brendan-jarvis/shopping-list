@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { List } from '@/utils/Types'
+import { List, Item } from '@/utils/Types'
 
 type CardProps = {
   list: List
@@ -15,11 +15,31 @@ const Card = ({ list, data }: CardProps) => {
     const newItem = {
       id: list.items[list.items.length - 1].id + 1,
       content: item,
+      listId: list.id,
     }
 
     list.items.push(newItem)
 
     setItem('')
+  }
+
+  const moveItem = (
+    item: Item,
+    fromList: List,
+    toListId: number,
+    itemId: number
+  ) => {
+    const toList = data.find((list) => list.id === toListId)
+
+    if (!toList) {
+      return
+    }
+
+    fromList.items = fromList.items.filter((item) => item.id !== itemId)
+
+    toList.items.push(item)
+
+    console.log(data)
   }
 
   return (
@@ -34,12 +54,14 @@ const Card = ({ list, data }: CardProps) => {
               <li key={item.id} className="rounded-lg bg-white px-4 py-2">
                 <button
                   className="rounded-lg bg-[#D9D9D9] text-sm"
-                  onClick={() => moveItem(list, prevList, item.id)}
+                  onClick={() => moveItem(item, list, item.listId - 1, item.id)}
                 >
                   ⬅️
                 </button>
                 {item.content}
-                <button onClick={() => moveItem(list, nextList, item.id)}>
+                <button
+                  onClick={() => moveItem(item, list, item.listId + 1, item.id)}
+                >
                   ➡️
                 </button>
               </li>
