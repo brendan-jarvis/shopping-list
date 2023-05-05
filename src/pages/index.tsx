@@ -1,6 +1,9 @@
 import Nav from '@/components/Nav'
 import Card from '@/components/Card'
 import type { List } from '@/utils/Types'
+import { Inter } from 'next/font/google'
+
+const inter = Inter({ subsets: ['latin'] })
 
 const data: List[] = [
   {
@@ -45,16 +48,14 @@ const data: List[] = [
 
 const Home = () => {
   return (
-    <>
+    <main className={`${inter.className}`}>
       <Nav />
-      <div className="flex items-center justify-center">
-        <div className="flex gap-4">
-          {data.map((list) => (
-            <Card key={list.id} list={list} />
-          ))}
-        </div>
+      <div className="mt-16 flex flex-wrap items-center justify-center gap-4">
+        {data.map((list) => (
+          <Card key={list.id} list={list} />
+        ))}
       </div>
-    </>
+    </main>
   )
 }
 
