@@ -32,7 +32,16 @@ const Card = ({ list, data }: CardProps) => {
           <ul className="space-y-4">
             {list.items.map((item) => (
               <li key={item.id} className="rounded-lg bg-white px-4 py-2">
+                <button
+                  className="rounded-lg bg-[#D9D9D9] text-sm"
+                  onClick={() => moveItem(list, prevList, item.id)}
+                >
+                  ⬅️
+                </button>
                 {item.content}
+                <button onClick={() => moveItem(list, nextList, item.id)}>
+                  ➡️
+                </button>
               </li>
             ))}
           </ul>
