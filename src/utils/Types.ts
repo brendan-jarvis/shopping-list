@@ -7,4 +7,5 @@ export type List = {
 export type Item = {
   id: number
   content: string
+  listId: number
 }
