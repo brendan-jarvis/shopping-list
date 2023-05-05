@@ -61,13 +61,13 @@ const data: List[] = [
 
 const Card = ({ list }: CardProps) => {
   return (
-    <div className="py-4 font-inter text-base w-72 h-96">
-      <h2 className="font-bold leading-5 tracking-tight text-center">
+    <div className="font-inter h-96 w-72 py-4 text-base">
+      <h2 className="text-center font-bold leading-5 tracking-tight">
         {list.name}
       </h2>
       <ul className="bg-gray-300">
         {list.items.map((item) => (
-          <li key={item.id} className="bg-white rounded-lg px-4 py-2">
+          <li key={item.id} className="rounded-lg bg-white px-4 py-2">
             {item.content}
           </li>
         ))}
