@@ -66,18 +66,22 @@ const Card = ({ list, data, setData }: CardProps) => {
         <div className="flex h-full flex-col justify-between">
           <ul className="space-y-4">
             {list.items.map((item) => (
-              <li key={item.id} className="rounded-lg bg-white px-4 py-2">
+              <li
+                key={item.id}
+                className="flex items-center justify-between rounded-lg bg-white px-4 py-2"
+              >
                 <button
-                  className="rounded-lg bg-[#D9D9D9] text-sm"
+                  className="rounded-lg bg-[#D9D9D9] px-2 py-1 text-sm hover:bg-[#C8C8C8] hover:font-bold hover:drop-shadow-md"
                   onClick={() => moveItem(item, list, item.listId - 1, item.id)}
                 >
-                  ⬅️
+                  &lt;&lt;
                 </button>
-                {item.content}
+                <span className="flex-1 text-center">{item.content}</span>
                 <button
+                  className="rounded-lg bg-[#D9D9D9] px-2 py-1 text-sm hover:bg-[#C8C8C8] hover:font-bold hover:drop-shadow-md"
                   onClick={() => moveItem(item, list, item.listId + 1, item.id)}
                 >
-                  ➡️
+                  &gt;&gt;
                 </button>
               </li>
             ))}
