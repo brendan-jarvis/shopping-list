@@ -44,11 +44,17 @@ const Card = ({ list, data, setData }: CardProps) => {
       return
     }
 
-    fromList.items = fromList.items.filter((item) => item.id !== itemId)
-
-    toList.items.push(item)
-
-    console.log(data)
+    setData(
+      data.map((l) => {
+        if (l.id === fromList.id) {
+          return { ...l, items: l.items.filter((item) => item.id !== itemId) }
+        } else if (l.id === toListId) {
+          return { ...l, items: [...l.items, { ...item, listId: toListId }] }
+        } else {
+          return l
+        }
+      })
+    )
   }
 
   return (
