@@ -61,9 +61,11 @@ const data: List[] = [
 
 const Card = ({ list }: CardProps) => {
   return (
-    <div className="card">
-      <h2 className="card-title text-xl">{list.name}</h2>
-      <ul>
+    <div className="w-72 h-96">
+      <h2 className="font-inter text-base font-bold leading-5 tracking-tight text-center">
+        {list.name}
+      </h2>
+      <ul className="bg-gray-300">
         {list.items.map((item) => (
           <li key={item.id}>{item.content}</li>
         ))}
@@ -76,10 +78,12 @@ const Home = () => {
   return (
     <>
       <Nav />
-      <div className="flex gap-4">
-        {data.map((list) => (
-          <Card key={list.id} list={list} />
-        ))}
+      <div className="flex items-center justify-center">
+        <div className="flex gap-4">
+          {data.map((list) => (
+            <Card key={list.id} list={list} />
+          ))}
+        </div>
       </div>
     </>
   )
