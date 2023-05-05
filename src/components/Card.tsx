@@ -4,9 +4,10 @@ import { List, Item } from '@/utils/Types'
 type CardProps = {
   list: List
   data: List[]
+  setData: (data: List[]) => void
 }
 
-const Card = ({ list, data }: CardProps) => {
+const Card = ({ list, data, setData }: CardProps) => {
   const [item, setItem] = useState('')
 
   const handleSubmit = (e: { preventDefault: () => void }) => {
@@ -18,8 +19,11 @@ const Card = ({ list, data }: CardProps) => {
       listId: list.id,
     }
 
-    list.items.push(newItem)
-
+    setData(
+      data.map((l) =>
+        l.id === list.id ? { ...l, items: [...l.items, newItem] } : l
+      )
+    )
     setItem('')
   }
 
