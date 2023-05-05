@@ -15,7 +15,7 @@ type Item = {
 }
 
 type CardProps = {
-  list: Item[]
+  list: List
 }
 
 const data: List[] = [
@@ -62,10 +62,10 @@ const data: List[] = [
 const Card = ({ list }: CardProps) => {
   return (
     <div className="card">
-      <h2 className="card-title text-xl">A list</h2>
+      <h2 className="card-title text-xl">{list.name}</h2>
       <ul>
-        {data.map((item) => (
-          <li key={item.id}>{item.name}</li>
+        {list.items.map((item) => (
+          <li key={item.id}>{item.content}</li>
         ))}
       </ul>
     </div>
@@ -76,7 +76,11 @@ const Home = () => {
   return (
     <>
       <Nav />
-      <div className="flex gap-4"></div>
+      <div className="flex gap-4">
+        {data.map((list) => (
+          <Card key={list.id} list={list} />
+        ))}
+      </div>
     </>
   )
 }
