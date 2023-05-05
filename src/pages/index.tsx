@@ -29,7 +29,7 @@ const data: List[] = [
     name: 'List 2',
     items: [
       {
-        id: 1,
+        id: 4,
         content: 'Item 4',
       },
     ],
@@ -39,7 +39,7 @@ const data: List[] = [
     name: 'List 3',
     items: [
       {
-        id: 1,
+        id: 5,
         content: 'Item 5',
       },
     ],
@@ -52,7 +52,7 @@ const Home = () => {
       <Nav />
       <div className="mt-16 flex flex-wrap items-center justify-center gap-4">
         {data.map((list) => (
-          <Card key={list.id} list={list} />
+          <Card key={list.id} list={list} data={data} />
         ))}
       </div>
     </main>
