@@ -13,8 +13,13 @@ const Card = ({ list, data, setData }: CardProps) => {
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault()
 
+    const maxId = data.reduce(
+      (acc, list) => Math.max(acc, ...list.items.map((item) => item.id)),
+      0
+    )
+
     const newItem = {
-      id: list.items[list.items.length - 1].id + 1,
+      id: maxId + 1,
       content: item,
       listId: list.id,
     }
