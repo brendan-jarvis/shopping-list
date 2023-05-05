@@ -3,9 +3,10 @@ import { List } from '@/utils/Types'
 
 type CardProps = {
   list: List
+  data: List[]
 }
 
-const Card = ({ list }: CardProps) => {
+const Card = ({ list, data }: CardProps) => {
   const [item, setItem] = useState('')
 
   const handleSubmit = (e: { preventDefault: () => void }) => {
