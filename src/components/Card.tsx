@@ -70,19 +70,27 @@ const Card = ({ list, data, setData }: CardProps) => {
                 key={item.id}
                 className="flex items-center justify-between rounded-lg bg-white px-4 py-2"
               >
-                <button
-                  className="rounded-lg bg-[#D9D9D9] px-2 py-1 text-sm hover:bg-[#C8C8C8] hover:font-bold hover:drop-shadow-md"
-                  onClick={() => moveItem(item, list, item.listId - 1, item.id)}
-                >
-                  &lt;&lt;
-                </button>
+                {data.find((l) => l.id === item.listId - 1) && (
+                  <button
+                    className="rounded-lg bg-[#D9D9D9] px-2 py-1 text-sm hover:bg-[#C8C8C8] hover:font-bold hover:drop-shadow-md"
+                    onClick={() =>
+                      moveItem(item, list, item.listId - 1, item.id)
+                    }
+                  >
+                    &lt;&lt;
+                  </button>
+                )}
                 <span className="flex-1 text-center">{item.content}</span>
-                <button
-                  className="rounded-lg bg-[#D9D9D9] px-2 py-1 text-sm hover:bg-[#C8C8C8] hover:font-bold hover:drop-shadow-md"
-                  onClick={() => moveItem(item, list, item.listId + 1, item.id)}
-                >
-                  &gt;&gt;
-                </button>
+                {data.find((l) => l.id === item.listId + 1) && (
+                  <button
+                    className="rounded-lg bg-[#D9D9D9] px-2 py-1 text-sm hover:bg-[#C8C8C8] hover:font-bold hover:drop-shadow-md"
+                    onClick={() =>
+                      moveItem(item, list, item.listId + 1, item.id)
+                    }
+                  >
+                    &gt;&gt;
+                  </button>
+                )}
               </li>
             ))}
           </ul>
