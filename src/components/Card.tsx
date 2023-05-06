@@ -53,8 +53,8 @@ const Card = ({ list, data, setData }: CardProps) => {
 
   return (
     <div className="flex flex-col justify-end">
-      <h2 className="mb-2 text-center font-bold leading-5 tracking-tight">
-        {list.name}
+      <h2 className="mb-2 text-center text-sm font-bold leading-5 tracking-tight">
+        {list.name.toUpperCase()}
       </h2>
       <div className="mb-4 h-96 w-72 rounded-lg bg-[#D9D9D9] p-4 py-4 text-base">
         <div className="flex h-full flex-col justify-between">
@@ -74,7 +74,9 @@ const Card = ({ list, data, setData }: CardProps) => {
                     &lt;&lt;
                   </button>
                 )}
-                <span className="flex-1 text-center">{item.content}</span>
+                <span className="flex-1 text-center text-sm">
+                  {item.content}
+                </span>
                 {data.find((l) => l.id === item.listId + 1) && (
                   <button
                     className="rounded-lg bg-[#D9D9D9] px-2 py-1 text-sm hover:bg-[#C8C8C8] hover:font-bold hover:drop-shadow-md"
