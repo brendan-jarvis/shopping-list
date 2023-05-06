@@ -38,12 +38,6 @@ const Card = ({ list, data, setData }: CardProps) => {
     toListId: number,
     itemId: number
   ) => {
-    const toList = data.find((list) => list.id === toListId)
-
-    if (!toList) {
-      return
-    }
-
     setData(
       data.map((l) => {
         if (l.id === fromList.id) {
