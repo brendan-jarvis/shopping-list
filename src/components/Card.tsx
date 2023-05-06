@@ -100,7 +100,7 @@ const Card = ({ list, data, setData }: CardProps) => {
             />
             <button
               type="submit"
-              className="rounded-lg bg-white p-2 text-xs text-black hover:font-bold hover:drop-shadow-md"
+              className="rounded-lg bg-white p-3 text-xs text-black hover:font-bold hover:drop-shadow-md"
             >
               GO
             </button>
